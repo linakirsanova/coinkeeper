@@ -1,0 +1,59 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: baseline;
+  align-content: flex-start;
+}
+
+.incomes, .expenses, .accounts {
+  border-style: ridge;
+  border: 3px solid lightgray;
+  width: 70%;
+  margin: 25px auto 25px auto;
+
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: baseline;
+  align-content: flex-start;
+}
+
+.account_element, .expense_element, .income_element {
+  padding: 15px;
+  height: 160px;
+  width: 120px;
+}
+
+.account_element_name, .expense_element_name, .income_element_name {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+
+.btn-circle {
+  width: 120px;
+  height: 120px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 100px;
+}
+
+.green {
+  background-color: #5cb85c;
+  border: 2px solid #4cae4c;
+}
+
+.yellow {
+  background-color: #f0ad4e;
+  border: 2px solid #eea236;
+}
+
+.red {
+  background-color: #d9534f;
+  border: 2px solid #d43f3a;
+}
+

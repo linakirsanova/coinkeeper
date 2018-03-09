@@ -1,4 +1,6 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
+
 
 export default class Expenses extends React.Component {
 
@@ -9,9 +11,11 @@ export default class Expenses extends React.Component {
       <div className='expenses'>
         { expenses.map(el => {
           return (
-            <div>
-              <p>{el.name}</p>
-              <p>{el.sum}</p>
+            <div className='expense_element'>
+              <div className='expense_element_sum'>
+                <Button bsStyle="circle red">{el.sum}</Button>
+              </div>
+              <div className='expense_element_name'>{el.name}</div>
             </div>
           )
         })}

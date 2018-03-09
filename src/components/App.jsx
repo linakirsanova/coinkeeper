@@ -4,9 +4,9 @@ import AccountsContainer from '../containers/Accounts';
 import ExpensesContainer from '../containers/Expenses';
 
 export default () => (
-  <div>
+  <React.Fragment>
     <IncomesContainer />
     <AccountsContainer />
     <ExpensesContainer />
-  </div>
+  </React.Fragment>
 );
