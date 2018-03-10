@@ -42,6 +42,12 @@ export default class Accounts extends React.Component {
               </div>
             )
           })}
+          <div className='account_element'>
+            <div className='account_element_sum'>
+              <Button bsStyle="warning" className="circle">+</Button>
+            </div>
+            <div className='account_element_name'>Add more...</div>
+          </div>
         </div>
     )
   }

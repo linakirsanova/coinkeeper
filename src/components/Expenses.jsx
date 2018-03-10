@@ -41,6 +41,12 @@ export default class Expenses extends React.Component {
             </div>
           )
         })}
+        <div className='expense_element'>
+          <div className='expense_element_sum'>
+            <Button bsStyle="danger" className="circle">+</Button>
+          </div>
+          <div className='expense_element_name'>Add more...</div>
+        </div>
       </div>
     )
   }

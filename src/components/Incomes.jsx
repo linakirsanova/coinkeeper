@@ -35,12 +35,18 @@ export default class Incomes extends React.Component {
                    draggable='true'
                    onDragStart={this.drag}
                    id={el.name}>
-                <Button bsStyle='success' className="circle green">{el.sum}</Button>
+                <Button bsStyle='success' className="circle">{el.sum}</Button>
               </div>
               <div className='income_element_name'>{el.name}</div>
             </div>
           )
         })}
+        <div className='income_element'>
+          <div className='income_element_sum'>
+            <Button bsStyle="success" className="circle">+</Button>
+          </div>
+          <div className='income_element_name'>Add more...</div>
+        </div>
       </div>
     )
   }

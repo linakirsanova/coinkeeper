@@ -5,7 +5,6 @@ import * as actions from '../actions';
 const initialAcconts = [
   { name: 'Wallet', sum: 0 },
   { name: 'Bank Account', sum: 0 },
-  { name: 'Add more...', sum: '+' },
 ];
 
 const initialExpenses = [
@@ -13,13 +12,11 @@ const initialExpenses = [
   { name: 'Groceries', sum: 0 },
   { name: 'Transport', sum: 0 },
   { name: 'Cinema', sum: 0 },
-  { name: 'Add more...', sum: '+' },
 ];
 
 const initialIncomes = [
   { name: 'Upwork', sum: 0 },
   { name: 'Deposit', sum: 0 },
-  { name: 'Add more...', sum: '+' },
 ];
 
 const incomes = handleActions({
