@@ -4,32 +4,38 @@
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: baseline;
-  align-content: flex-start; }
+  align-content: flex-start;
+}
 
 .incomes, .expenses, .accounts {
   border-style: ridge;
   border: 3px solid lightgray;
   width: 70%;
   margin: 25px auto 25px auto;
+
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
   align-items: baseline;
-  align-content: flex-start; }
+  align-content: flex-start;
+}
 
 .account_element, .expense_element, .income_element {
   margin: 15px;
-  height: 160px; }
-  .account_element .circle, .expense_element .circle, .income_element .circle {
+  height: 160px;
+  .circle {
     width: 120px;
     height: 120px;
     padding: 10px 16px;
     font-size: 18px;
     line-height: 1.33;
-    border-radius: 100px; }
+    border-radius: 100px;
+  }
+}
 
 .account_element_name, .expense_element_name, .income_element_name {
   height: 40px;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center
+}

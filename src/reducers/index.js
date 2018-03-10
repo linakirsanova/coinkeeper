@@ -49,9 +49,16 @@ const transfers = handleActions({
   },
 }, []);
 
+const showModal = handleActions({
+  [actions.showModal](state) {
+    return !state;
+  }
+}, false);
+
 export default combineReducers({
   incomes,
   expenses,
   accounts,
-  transfers
+  transfers,
+  showModal,
 });
