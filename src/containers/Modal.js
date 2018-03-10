@@ -3,9 +3,9 @@ import Component from '../components/Modal';
 import * as actionCreators from '../actions';
 
 const mapStateToProps = state => {
-    debugger;
   const props = {
-    show: state.showModal
+    show: state.showModal,
+    operation: state.newOperation,
   };
   return props;
 };

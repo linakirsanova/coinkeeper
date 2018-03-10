@@ -6,7 +6,7 @@ import _ from 'lodash';
 export default class Accounts extends React.Component {
 
   drag = (e) => {
-    //debugger;
+    this.props.createOperation({from: e.target.id});
     console.log(e.target.id);
   }
 
@@ -16,6 +16,8 @@ export default class Accounts extends React.Component {
 
   drop = (e) => {
     e.preventDefault();
+    console.log(e.target.id);
+    this.props.createOperation({to: e.target.id});
     //debugger;
     this.props.showModal();
   }
@@ -36,7 +38,7 @@ export default class Accounts extends React.Component {
                      draggable='true'
                      onDragStart={this.drag}
                      id={el.name}>
-                  <Button bsStyle="warning" className="circle yellow">{el.sum}</Button>
+                  <Button bsStyle="warning" className="circle" id={el.name}>{el.sum}</Button>
                 </div>
                 <div className='account_element_name'>{el.name}</div>
               </div>

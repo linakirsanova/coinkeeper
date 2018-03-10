@@ -38,13 +38,17 @@ const accounts = handleActions({
 }, initialAcconts);
 
 const transfers = handleActions({
-  [actions.addIncome](state, { payload: income }) {
-    return [ ...state, { from: income.name, to: income.target, sum: income.sum }]
-  },
-  [actions.addExpense](state, { payload: expense }) {
-    return [ ...state, { from: expense.name, to: expense.target, sum: expense.sum }]
+  [actions.addOperation](state, { payload: operation }) {
+    console.log(state);
+    return [ ...state, operation]
   },
 }, []);
+
+const newOperation = handleActions({
+  [actions.createOperation](state, {payload: info}) {
+    return {...state, ...info};
+  },
+}, {});
 
 const showModal = handleActions({
   [actions.showModal](state) {
@@ -58,4 +62,5 @@ export default combineReducers({
   accounts,
   transfers,
   showModal,
+  newOperation,
 });
