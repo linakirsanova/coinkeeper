@@ -19,6 +19,12 @@ export default class Expenses extends React.Component {
     this.props.showModal();
   }
 
+  createElement = (e) => {
+    e.preventDefault();
+    this.props.createNewElement({ type: 'expenses' });
+    this.props.showNewElementModal();
+  }
+
   render() {
     //debugger;
     const { expenses } = this.props;
@@ -42,7 +48,7 @@ export default class Expenses extends React.Component {
         })}
         <div className='expense_element'>
           <div className='expense_element_sum'>
-            <Button bsStyle="danger" className="circle">+</Button>
+            <Button bsStyle="danger" className="circle" onClick={this.createElement}>+</Button>
           </div>
           <div className='expense_element_name'>Add more...</div>
         </div>

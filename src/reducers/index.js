@@ -21,10 +21,10 @@ const initialState = {
 
 const elements = handleActions({
   [actions.createElement](state, { payload: { type, name, sum } }) {
-    const newElement = [...state.type, { name, sum }];
-    return { ...state, [type]: newElement}
+    console.log(type);
+    const newPieceOfState = [...state[type], { name, sum, type }];
+    return { ...state, [type]: newPieceOfState}
   },
-
   [actions.addTransfer](state, { payload: operation }) {
     const { toType, fromType } = operation;
     const plusState = state[toType].map(({name, sum}) => 
@@ -38,12 +38,17 @@ const elements = handleActions({
     });
     const newState = {...state, [fromType]: minusState, [toType]: plusState };
     return newState;    
-  }
+  },
 }, initialState);
 
 const newOperation = handleActions({
   [actions.createOperation](state, {payload: info}) {
-    console.log(info);
+    return {...state, ...info};
+  },
+}, {});
+
+const newElement = handleActions({
+  [actions.createNewElement](state, {payload: info}) {
     return {...state, ...info};
   },
 }, {});
@@ -54,8 +59,16 @@ const showModal = handleActions({
   }
 }, false);
 
+const showNewElementModal = handleActions({
+  [actions.showNewElementModal](state) {
+    return !state;
+  }
+}, false);
+
 export default combineReducers({
   showModal,
+  showNewElementModal,
   newOperation,
+  newElement,
   elements,
 });

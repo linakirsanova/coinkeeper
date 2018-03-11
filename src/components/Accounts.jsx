@@ -20,6 +20,11 @@ export default class Accounts extends React.Component {
     this.props.showModal();
   }
 
+  createElement = (e) => {
+    e.preventDefault();
+    this.props.createNewElement({ type: 'accounts' });
+    this.props.showNewElementModal();
+  }
 
   render() {
     const { accounts } = this.props;
@@ -44,7 +49,7 @@ export default class Accounts extends React.Component {
           })}
           <div className='account_element'>
             <div className='account_element_sum'>
-              <Button bsStyle="warning" className="circle">+</Button>
+              <Button bsStyle="warning" className="circle" onClick={this.createElement}>+</Button>
             </div>
             <div className='account_element_name'>Add more...</div>
           </div>

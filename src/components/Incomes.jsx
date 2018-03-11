@@ -19,6 +19,12 @@ export default class Incomes extends React.Component {
     this.props.showModal();
   }
 
+  createElement = (e) => {
+    e.preventDefault();
+    this.props.createNewElement({ type: 'incomes' });
+    this.props.showNewElementModal();
+  }
+
   render() {
     //debugger;
     const { incomes } = this.props;
@@ -42,7 +48,7 @@ export default class Incomes extends React.Component {
         })}
         <div className='income_element'>
           <div className='income_element_sum'>
-            <Button bsStyle="success" className="circle">+</Button>
+            <Button bsStyle="success" className="circle" onClick={this.createElement}>+</Button>
           </div>
           <div className='income_element_name'>Add more...</div>
         </div>
