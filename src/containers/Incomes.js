@@ -4,7 +4,7 @@ import * as actionCreators from '../actions';
 
 const mapStateToProps = state => {
   const props = {
-    incomes: state.incomes
+    incomes: state.elements.incomes
   };
   return props;
 };

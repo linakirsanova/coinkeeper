@@ -2,47 +2,35 @@ import { combineReducers } from 'redux';
 import { handleActions } from 'redux-actions';
 import * as actions from '../actions';
 
-const initialAcconts = [
-  { name: 'Wallet', sum: 0 },
-  { name: 'Bank Account', sum: 0 },
-];
+const initialState = {
+  accounts: [
+    { name: 'Wallet', sum: 0, type: 'accounts' },
+    { name: 'Bank Account', sum: 0, type: 'accounts' },
+  ],
+  expenses: [
+    { name: 'Restaurants', sum: 0, type: 'expenses' },
+    { name: 'Groceries', sum: 0, type: 'expenses' },
+    { name: 'Transport', sum: 0, type: 'expenses' },
+    { name: 'Cinema', sum: 0, type: 'expenses' },
+  ],
+  incomes: [
+    { name: 'Upwork', sum: 0, type: 'expenses' },
+    { name: 'Deposit', sum: 0, type: 'expenses' },
+  ]
+};
 
-const initialExpenses = [
-  { name: 'Restaurants', sum: 0 },
-  { name: 'Groceries', sum: 0 },
-  { name: 'Transport', sum: 0 },
-  { name: 'Cinema', sum: 0 },
-];
-
-const initialIncomes = [
-  { name: 'Upwork', sum: 0 },
-  { name: 'Deposit', sum: 0 },
-];
-
-const incomes = handleActions({
-  [actions.createIncome](state, { payload: { name, sum } }) {
-    return [ ...state, { name, sum } ]
+const elements = handleActions({
+  [actions.createElement](state, { payload: { type, name, sum } }) {
+    const newElement = [...state.type, { name, sum }];
+    return { ...state, [type]: newElement}
   },
-}, initialIncomes);
+}, initialState);
 
-const expenses = handleActions({
-  [actions.createExpense](state, { payload: { name, sum } }) {
-    return [ ...state, { name, sum } ]
-  },
-}, initialExpenses);
-
-const accounts = handleActions({
-  [actions.createExpense](state, { payload: { name, sum } }) {
-    return [ ...state, { name, sum } ]
-  },
-}, initialAcconts);
-
-const transfers = handleActions({
-  [actions.addOperation](state, { payload: operation }) {
-    console.log(state);
-    return [ ...state, operation]
-  },
-}, []);
+// const transfers = handleActions({
+//   [actions.addOperation](state, { payload: operation }) {
+//     return [ ...state, operation]
+//   },
+// }, []);
 
 const newOperation = handleActions({
   [actions.createOperation](state, {payload: info}) {
@@ -56,11 +44,20 @@ const showModal = handleActions({
   }
 }, false);
 
+// const addTransfer = handleActions({
+//   [actions.addTransfer](state, { payload: operation }) {
+//     console.log(operation);
+//     const newState = state.map(({name, sum}) => 
+//     name === operation.to ? { name, sum: sum + Number(operation.sum)} : { name, sum });
+//     console.log(newState);
+//     return newState;
+//   },
+// }, initialAcconts);
+
 export default combineReducers({
-  incomes,
-  expenses,
-  accounts,
-  transfers,
+  // transfers,
   showModal,
   newOperation,
+  elements,
+  // addTransfer,
 });
