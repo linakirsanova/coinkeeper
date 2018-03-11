@@ -3,7 +3,7 @@ import Component from '../components/Accounts';
 import * as actionCreators from '../actions';
 
 const mapStateToProps = state => {
-  console.log(state);
+  //console.log(state);
   const props = {
     accounts: state.elements.accounts
   };

@@ -6,8 +6,8 @@ export default class ShowModal extends React.Component {
     handleSumChange = e => this.props.createOperation({ sum: e.target.value });
 
     handleSubmit = e => {
-        this.props.addOperation(this.props.operation);
         this.props.addTransfer(this.props.operation);
+        this.props.createOperation({sum: ''});
         this.props.showModal();
     }
 

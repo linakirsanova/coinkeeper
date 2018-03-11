@@ -24,16 +24,26 @@ const elements = handleActions({
     const newElement = [...state.type, { name, sum }];
     return { ...state, [type]: newElement}
   },
-}, initialState);
 
-// const transfers = handleActions({
-//   [actions.addOperation](state, { payload: operation }) {
-//     return [ ...state, operation]
-//   },
-// }, []);
+  [actions.addTransfer](state, { payload: operation }) {
+    const { toType, fromType } = operation;
+    const plusState = state[toType].map(({name, sum}) => 
+      name === operation.to ? { name, sum: sum + Number(operation.sum)} : { name, sum });
+    const minusState = state[fromType].map(({name, sum}) => {
+      if (name === operation.from) {
+        return fromType === 'incomes' ? { name, sum: sum + Number(operation.sum)} :
+       { name, sum: sum - Number(operation.sum)};
+      }
+      return { name, sum };
+    });
+    const newState = {...state, [fromType]: minusState, [toType]: plusState };
+    return newState;    
+  }
+}, initialState);
 
 const newOperation = handleActions({
   [actions.createOperation](state, {payload: info}) {
+    console.log(info);
     return {...state, ...info};
   },
 }, {});
@@ -44,20 +54,8 @@ const showModal = handleActions({
   }
 }, false);
 
-// const addTransfer = handleActions({
-//   [actions.addTransfer](state, { payload: operation }) {
-//     console.log(operation);
-//     const newState = state.map(({name, sum}) => 
-//     name === operation.to ? { name, sum: sum + Number(operation.sum)} : { name, sum });
-//     console.log(newState);
-//     return newState;
-//   },
-// }, initialAcconts);
-
 export default combineReducers({
-  // transfers,
   showModal,
   newOperation,
   elements,
-  // addTransfer,
 });

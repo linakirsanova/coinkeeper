@@ -6,7 +6,7 @@ import _ from 'lodash';
 export default class Expenses extends React.Component {
   
   drag = (e) => {
-    this.props.createOperation({from: e.target.id});
+    this.props.createOperation({from: e.target.id, fromType: 'expenses' });
   }
 
   allowDrop = (e) => {
@@ -15,7 +15,7 @@ export default class Expenses extends React.Component {
 
   drop = (e) => {
     e.preventDefault();
-    this.props.createOperation({to: e.target.id});
+    this.props.createOperation({to: e.target.id, toType: 'expenses' });
     this.props.showModal();
   }
 
@@ -34,7 +34,7 @@ export default class Expenses extends React.Component {
                    draggable='true'
                    onDragStart={this.drag}
                    id={el.name}>
-                <Button bsStyle="danger" className="circle" id={el.name}>{el.sum}</Button>
+                <Button bsStyle="danger" className="circle" id={el.name}>{el.sum} ₽</Button>
               </div>
               <div className='expense_element_name'>{el.name}</div>
             </div>
