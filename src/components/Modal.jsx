@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Modal } from 'react-bootstrap';
+import _ from 'lodash';
 
 export default class ShowModal extends React.Component {
     
@@ -7,12 +8,13 @@ export default class ShowModal extends React.Component {
 
     handleSubmit = e => {
         this.props.addTransfer(this.props.operation);
+        console.log(this.props);
         this.props.createOperation({sum: ''});
         this.props.showModal();
     }
 
     render() {
-        //debugger;
+        const { from, fromType } = this.props.operation;
         return (
             <div className="static-modal">
                 <Modal show={this.props.show}>
@@ -24,9 +26,11 @@ export default class ShowModal extends React.Component {
                     <div>
                         <label htmlFor="originOfMoney">From</label>
                         <select id="originOfMoney" className="form-control">
-                        <option>Choose</option>
-                        <option value="wallet">Wallet</option>
-                        <option value="bankAccount">Bank Account</option>
+                            <option>{from}</option>
+                            {
+                            fromType ? this.props.elements[fromType].filter(el => el.name !== from)
+                            .map(el => <option value={el.name} key={_.uniqueId()}>{el.name}</option>) : null
+                            }
                         </select>
                     </div>
                     <br />
@@ -34,6 +38,7 @@ export default class ShowModal extends React.Component {
                         <label htmlFor="amountOfMoney">Amount</label>
                         <br />
                         <input id="amountOfMoney" type='number'
+                               className="form-control"
                                onChange={this.handleSumChange} 
                                value={this.props.operation.sum}
                                placeholder='Enter the amount'/>

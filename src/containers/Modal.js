@@ -6,6 +6,7 @@ const mapStateToProps = state => {
   const props = {
     show: state.showModal,
     operation: state.newOperation,
+    elements: state.elements,
   };
   return props;
 };

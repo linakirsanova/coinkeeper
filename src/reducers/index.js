@@ -16,16 +16,20 @@ const initialState = {
   incomes: [
     { name: 'Upwork', sum: 0, type: 'expenses' },
     { name: 'Deposit', sum: 0, type: 'expenses' },
+  ],
+  balance: [
+    { name: 'Current balance', sum: 0 },
+    { name: 'Expenses this month', sum: 0 }
   ]
 };
 
 const elements = handleActions({
   [actions.createElement](state, { payload: { type, name, sum } }) {
-    console.log(type);
     const newPieceOfState = [...state[type], { name, sum, type }];
     return { ...state, [type]: newPieceOfState}
   },
   [actions.addTransfer](state, { payload: operation }) {
+    console.log(operation);
     const { toType, fromType } = operation;
     const plusState = state[toType].map(({name, sum}) => 
       name === operation.to ? { name, sum: sum + Number(operation.sum)} : { name, sum });
@@ -36,7 +40,10 @@ const elements = handleActions({
       }
       return { name, sum };
     });
-    const newState = {...state, [fromType]: minusState, [toType]: plusState };
+    const newBalance = state.balance.map(el => el.name === 'Current balance' ? 
+    { name: el.name, sum: el.sum - Number(operation.sum) } : { name: el.name, sum: el.sum + Number(operation.sum) });
+    console.log(newBalance);
+    const newState = {...state, [fromType]: minusState, [toType]: plusState, balance: newBalance };
     return newState;    
   },
 }, initialState);
