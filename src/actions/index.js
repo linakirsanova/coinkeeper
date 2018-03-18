@@ -9,3 +9,5 @@ export const createNewElement = createAction('CREATE_NEW_ELEMENT');
 
 export const addTransfer = createAction('ADD_TRANSFER');
 export const createElement = createAction('CREATE_ELEMENT');
+
+export const changeBalance = createAction('CHANGE_BALANCE');

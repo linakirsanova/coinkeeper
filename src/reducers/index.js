@@ -4,8 +4,8 @@ import * as actions from '../actions';
 
 const initialState = {
   accounts: [
-    { name: 'Wallet', sum: 0, type: 'accounts' },
-    { name: 'Bank Account', sum: 0, type: 'accounts' },
+    { name: 'Wallet', sum: 10000, type: 'accounts' },
+    { name: 'Bank Account', sum: 12340, type: 'accounts' },
   ],
   expenses: [
     { name: 'Restaurants', sum: 0, type: 'expenses' },
@@ -20,7 +20,8 @@ const initialState = {
   balance: [
     { name: 'Current balance', sum: 0 },
     { name: 'Expenses this month', sum: 0 }
-  ]
+  ],
+  transfers: [],
 };
 
 const elements = handleActions({
@@ -29,7 +30,6 @@ const elements = handleActions({
     return { ...state, [type]: newPieceOfState}
   },
   [actions.addTransfer](state, { payload: operation }) {
-    console.log(operation);
     const { toType, fromType } = operation;
     const plusState = state[toType].map(({name, sum}) => 
       name === operation.to ? { name, sum: sum + Number(operation.sum)} : { name, sum });
@@ -40,11 +40,13 @@ const elements = handleActions({
       }
       return { name, sum };
     });
+    return {...state, [fromType]: minusState, [toType]: plusState, transfers: [...state.transfers, operation] };    
+  },
+  [actions.changeBalance](state) {
     const newBalance = state.balance.map(el => el.name === 'Current balance' ? 
-    { name: el.name, sum: el.sum - Number(operation.sum) } : { name: el.name, sum: el.sum + Number(operation.sum) });
-    console.log(newBalance);
-    const newState = {...state, [fromType]: minusState, [toType]: plusState, balance: newBalance };
-    return newState;    
+    { name: el.name, sum: state.accounts.reduce((acc, el) =>  acc + el.sum, 0) } : 
+    { name: el.name, sum: state.expenses.reduce((acc, el) =>  acc + el.sum, 0) });
+    return {...state, balance: newBalance };
   },
 }, initialState);
 
