@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import _ from 'lodash';
+import * as moment from 'moment';
 
 
 export default class Accounts extends React.Component {
@@ -15,8 +16,9 @@ export default class Accounts extends React.Component {
 
   drop = (e) => {
     e.preventDefault();
-    this.props.createOperation({to: e.target.id, toType: 'accounts' });
-    //debugger;
+    const date = moment().format('MMMM Do YYYY');
+    const time = moment().format('k:mm');
+    this.props.createOperation({to: e.target.id, toType: 'accounts', date, time });
     this.props.showModal();
   }
 

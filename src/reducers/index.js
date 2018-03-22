@@ -21,7 +21,12 @@ const initialState = {
     { name: 'Current balance', sum: 0 },
     { name: 'Expenses this month', sum: 0 }
   ],
-  transfers: [],
+  transfers: [
+    { from: "Upwork", fromType: "incomes", to: "Wallet", toType: "accounts", date: "March 22nd 2018", sum: "12000", time: "20:45" },
+    { from: "Deposit", fromType: "incomes", to: "Bank Account", toType: "accounts", date: "March 21nd 2018", sum: "6000", time: "20:41" },
+    {from: "Wallet", fromType: "accounts", to: "Restaurants", toType: "expenses", date: "March 20th 2018", sum: "2500", time: "19:21" },
+    {from: "Bank Account", fromType: "accounts", to: "Groceries", toType: "expenses", date: "March 18th 2018", sum: "4600", time: "10:48" },
+  ],
 };
 
 const elements = handleActions({
