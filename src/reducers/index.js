@@ -74,9 +74,16 @@ const showNewElementModal = handleActions({
   }
 }, false);
 
+const showTransferHistory = handleActions({
+  [actions.showTransferHistory](state) {
+    return !state;
+  }
+}, false);
+
 export default combineReducers({
   showModal,
   showNewElementModal,
+  showTransferHistory,
   newOperation,
   newElement,
   elements,

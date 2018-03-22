@@ -8,10 +8,10 @@
 }
 
 .incomes, .expenses, .accounts {
-  border-style: ridge;
-  border: 3px solid lightgray;
+  background: #f5f4f4;
+  border-radius: 20px;
   width: 70%;
-  margin: 25px auto 25px auto;
+  margin: 10px auto 10px auto;
 
   display: flex;
   flex-flow: row wrap;
@@ -22,13 +22,11 @@
 
 .account_element, .expense_element, .income_element {
   margin: 15px;
-  height: 160px;
+  height: 115px;
   .circle {
-    width: 120px;
-    height: 120px;
-    padding: 10px 16px;
-    font-size: 18px;
-    line-height: 1.33;
+    width: 90px;
+    height: 90px;
+    font-size: 14px;
     border-radius: 100px;
     font-family: 'PT Sans', serif;
   }
@@ -39,4 +37,8 @@
   display: flex;
   align-items: center;
   justify-content: center
+}
+
+.account_element_sum, .expense_element_sum, .income_element_sum {
+  text-align: center;
 }
