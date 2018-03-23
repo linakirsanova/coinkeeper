@@ -16,9 +16,9 @@ export default class Accounts extends React.Component {
 
   drop = (e) => {
     e.preventDefault();
-    const date = moment().format('MMMM Do YYYY');
-    const time = moment().format('k:mm');
-    this.props.createOperation({to: e.target.id, toType: 'accounts', date, time });
+    const unixDate = moment(Date.now());
+    const dayOfYear = Number(moment(unixDate).format('DDD'));
+    this.props.createOperation({to: e.target.id, toType: 'accounts', unixDate, dayOfYear });
     this.props.showModal();
   }
 

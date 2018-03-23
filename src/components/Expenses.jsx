@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import _ from 'lodash';
+import * as moment from 'moment';
 
 
 export default class Expenses extends React.Component {
@@ -15,7 +16,9 @@ export default class Expenses extends React.Component {
 
   drop = (e) => {
     e.preventDefault();
-    this.props.createOperation({to: e.target.id, toType: 'expenses' });
+    const unixDate = moment(Date.now());
+    const dayOfYear = Number(moment(unixDate).format('DDD'));
+    this.props.createOperation({to: e.target.id, toType: 'expenses', unixDate, dayOfYear });
     this.props.showModal();
   }
 

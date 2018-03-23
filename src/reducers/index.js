@@ -22,10 +22,11 @@ const initialState = {
     { name: 'Expenses this month', sum: 0 }
   ],
   transfers: [
-    { from: "Upwork", fromType: "incomes", to: "Wallet", toType: "accounts", date: "March 22nd 2018", sum: "12000", time: "20:45" },
-    { from: "Deposit", fromType: "incomes", to: "Bank Account", toType: "accounts", date: "March 21nd 2018", sum: "6000", time: "20:41" },
-    {from: "Wallet", fromType: "accounts", to: "Restaurants", toType: "expenses", date: "March 20th 2018", sum: "2500", time: "19:21" },
-    {from: "Bank Account", fromType: "accounts", to: "Groceries", toType: "expenses", date: "March 18th 2018", sum: "4600", time: "10:48" },
+    { from: "Upwork", fromType: "incomes", to: "Wallet", toType: "accounts", unixDate: 1521798323850, dayOfYear: 82, sum: "12000" },
+    { from: "Deposit", fromType: "incomes", to: "Bank Account", toType: "accounts", unixDate: 1521110580786, dayOfYear: 74, sum: "6000" },
+    { from: "Bank Account", fromType: "accounts", to: "Cinema", toType: "expenses", unixDate: 1521128760123, dayOfYear: 74, sum: "700" },
+    { from: "Wallet", fromType: "accounts", to: "Restaurants", toType: "expenses", unixDate: 1520966700672, dayOfYear: 72, sum: "2500" },
+    { from: "Bank Account", fromType: "accounts", to: "Groceries", toType: "expenses", unixDate: 1521566580, dayOfYear: 79, sum: "4600" },
   ],
 };
 
