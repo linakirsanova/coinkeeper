@@ -24,9 +24,8 @@ const initialState = {
   transfers: [
     { from: "Upwork", fromType: "incomes", to: "Wallet", toType: "accounts", unixDate: 1521798323850, dayOfYear: 82, sum: "12000" },
     { from: "Deposit", fromType: "incomes", to: "Bank Account", toType: "accounts", unixDate: 1521110580786, dayOfYear: 74, sum: "6000" },
-    { from: "Bank Account", fromType: "accounts", to: "Cinema", toType: "expenses", unixDate: 1521128760123, dayOfYear: 74, sum: "700" },
-    { from: "Wallet", fromType: "accounts", to: "Restaurants", toType: "expenses", unixDate: 1520966700672, dayOfYear: 72, sum: "2500" },
-    { from: "Bank Account", fromType: "accounts", to: "Groceries", toType: "expenses", unixDate: 1521566580, dayOfYear: 79, sum: "4600" },
+    { from: "Wallet", fromType: "accounts", to: "Restaurants", toType: "expenses", unixDate: 1521110599986, dayOfYear: 74, sum: "2500" },
+    { from: "Bank Account", fromType: "accounts", to: "Groceries", toType: "expenses", unixDate: 1521367680987, dayOfYear: 77, sum: "4600"},
   ],
 };
 
