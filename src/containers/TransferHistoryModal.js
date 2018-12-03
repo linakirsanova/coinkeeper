@@ -1,12 +1,11 @@
 import { connect } from 'react-redux';
-import Component from '../components/Modal';
+import Component from '../components/TransferHistoryModal';
 import * as actionCreators from '../actions';
 
 const mapStateToProps = state => {
   const props = {
-    show: state.showModal,
-    operation: state.newOperation,
-    elements: state.elements,
+    transfers: state.elements.transfers,
+    showHistory: state.showTransferHistory,
   };
   return props;
 };

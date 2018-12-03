@@ -36,9 +36,11 @@ const elements = handleActions({
   },
   [actions.addTransfer](state, { payload: operation }) {
     const { toType, fromType } = operation;
+    console.log(operation);
     const plusState = state[toType].map(({name, sum}) => 
       name === operation.to ? { name, sum: sum + Number(operation.sum)} : { name, sum });
     const minusState = state[fromType].map(({name, sum}) => {
+      console.log(name);
       if (name === operation.from) {
         return fromType === 'incomes' ? { name, sum: sum + Number(operation.sum)} :
        { name, sum: sum - Number(operation.sum)};

@@ -1,12 +1,11 @@
 import { connect } from 'react-redux';
-import Component from '../components/Modal';
+import Component from '../components/NewElementModal';
 import * as actionCreators from '../actions';
 
 const mapStateToProps = state => {
   const props = {
-    show: state.showModal,
-    operation: state.newOperation,
-    elements: state.elements,
+    show: state.showNewElementModal,
+    newElement: state.newElement,
   };
   return props;
 };
